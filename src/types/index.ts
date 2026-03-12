@@ -58,8 +58,6 @@ export interface Course {
   discussionGroups: DiscussionGroup[];
   routinePDF: string;
   allMaterialsLink: string;
-  endDate?: Timestamp;
-  archived?: boolean;
   createdAt: Timestamp;
 }
 
