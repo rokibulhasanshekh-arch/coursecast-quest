@@ -77,7 +77,6 @@ export default function AdminCoursesPage() {
     setInstructors(c.instructors?.length ? c.instructors : [{ name: "", subject: "", image: "" }]);
     setDiscussionGroups(c.discussionGroups?.length ? c.discussionGroups : [{ name: "", link: "" }]);
     setRoutinePDF(c.routinePDF || ""); setAllMaterialsLink(c.allMaterialsLink || "");
-    setEndDate(c.endDate?.toDate?.()?.toISOString().slice(0, 10) || "");
     setShowForm(true);
   };
 
