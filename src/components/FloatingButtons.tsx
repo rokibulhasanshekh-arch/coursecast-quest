@@ -420,7 +420,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
           </div>
         );
 
-      case "my-courses":
+      case "classroom":
         return (
           <div className="space-y-2">
             <div className="text-sm text-muted-foreground mb-2">🎓 আপনার এনরোল করা কোর্সসমূহ:</div>
