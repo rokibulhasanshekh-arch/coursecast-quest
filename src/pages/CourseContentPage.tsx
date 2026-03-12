@@ -27,11 +27,6 @@ export default function CourseContentPage() {
       if (courseSnap.exists()) {
         const courseData = { id: courseSnap.id, ...courseSnap.data() } as Course;
         setCourse(courseData);
-        // Check if course is archived
-        if (courseData.archived || (courseData.endDate && courseData.endDate.toMillis() < Date.now())) {
-          setLoading(false);
-          return;
-        }
       }
 
       const q = query(collection(db, "videos"), where("courseId", "==", courseId));
