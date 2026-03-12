@@ -281,12 +281,6 @@ export default function AdminCoursesPage() {
           <FormSection icon={Link2} title="Resources">
             <FormInput label="Routine PDF URL" type="text" placeholder="https://..." value={routinePDF} onChange={(e) => setRoutinePDF(e.target.value)} />
             <FormInput label="All Materials Link" type="text" placeholder="https://..." value={allMaterialsLink} onChange={(e) => setAllMaterialsLink(e.target.value)} />
-            <div className="space-y-1">
-              <label className="text-xs font-medium text-muted-foreground">Course End Date (Optional)</label>
-              <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)}
-                className="w-full px-3 py-2.5 rounded-lg bg-background border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all" />
-              <p className="text-[10px] text-muted-foreground">After this date, the course will be archived and inaccessible to students.</p>
-            </div>
           </FormSection>
 
           {/* Submit */}
