@@ -138,7 +138,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
       { match: ["এনরোল", "enroll", "ভর্তি", "admit", "admission"], reply: "📝 এনরোলমেন্ট প্রক্রিয়া দেখুন:", nav: "enrollment-guide" },
       { match: ["পেমেন্ট", "payment", "টাকা", "বিকাশ", "bkash", "নগদ", "nagad", "send money"], reply: "💳 পেমেন্ট তথ্য দেখুন:", nav: "payment-info" },
       { match: ["যোগাযোগ", "contact", "ফোন", "phone", "নাম্বার", "number", "সোশ্যাল", "social"], reply: "📞 যোগাযোগের তথ্য:", nav: "contact" },
-      { match: ["আমার কোর্স", "my course", "আমার", "enrolled"], reply: "🎓 আপনার কোর্সসমূহ:", nav: "my-courses" },
+      { match: ["আমার কোর্স", "my course", "আমার", "enrolled", "classroom", "ক্লাসরুম"], reply: "🎓 আপনার কোর্সসমূহ:", nav: "classroom" },
       { match: ["লিংক", "link", "দরকারি"], reply: "🔗 দরকারি লিংকসমূহ:", nav: "useful-links" },
       { match: ["হাই", "hi", "hello", "হ্যালো", "আসসালামু"], reply: "ওয়ালাইকুম আসসালাম! 😊 কিভাবে সাহায্য করতে পারি? নিচের অপশন থেকে বেছে নিন:" },
       { match: ["ধন্যবাদ", "thanks", "thank"], reply: "আপনাকেও ধন্যবাদ! 🙏 আর কোনো প্রশ্ন থাকলে জানাবেন।" },
