@@ -535,7 +535,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
     "enrollment-guide": "এনরোলমেন্ট গাইড",
     "payment-info": "পেমেন্ট তথ্য",
     contact: "যোগাযোগ",
-    "my-courses": "আমার কোর্সসমূহ",
+    "classroom": "আমার কোর্সসমূহ",
     "my-course-detail": selectedEnrolledCourse?.courseName || "কোর্স",
     "useful-links": "দরকারি লিংক",
   };
