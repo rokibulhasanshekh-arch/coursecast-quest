@@ -516,7 +516,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
               </div>
             )}
 
-            <a href={`/my-courses/${ec.id}`}
+            <a href={`/classroom/${ec.id}`}
               className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors">
               <BookOpen className="h-4 w-4" /> কোর্সে যান
             </a>
