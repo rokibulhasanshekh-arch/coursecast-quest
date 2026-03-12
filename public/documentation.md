@@ -1,577 +1,475 @@
 ================================================================================
-                    LMS (Learning Management System) - সম্পূর্ণ ডকুমেন্টেশন
+                    HSCianTV — Complete Platform Documentation
 ================================================================================
 
-📱 অ্যাপের নাম: Darpan Academy (অ্যাডমিন সেটিংস থেকে পরিবর্তনযোগ্য)
+📱 অ্যাপের নাম: HSCianTV (অ্যাডমিন সেটিংস থেকে পরিবর্তনযোগ্য)
 🌐 টাইপ: Progressive Web App (PWA) - মোবাইল ও ডেস্কটপ উভয়ে কাজ করে
-📦 টেকনোলজি: React, TypeScript, Firebase, Tailwind CSS
+📦 টেকনোলজি: React 18, TypeScript, Firebase, Tailwind CSS, Vite
+🔗 Live URL: https://coursecast-quest.lovable.app
+👨‍💻 Developer: Md Ridoan Mahmud Zisan
+📅 Last Updated: March 2026
 
 ================================================================================
                               অ্যাপের সংক্ষিপ্ত বিবরণ
 ================================================================================
 
-এটি একটি সম্পূর্ণ Learning Management System (LMS) যেখানে একজন অ্যাডমিন কোর্স 
-তৈরি করতে পারেন, ভিডিও আপলোড করতে পারেন, পরীক্ষা নিতে পারেন এবং স্টুডেন্টদের 
-ম্যানেজ করতে পারেন। স্টুডেন্টরা কোর্সে এনরোল করে ভিডিও দেখতে, পিডিএফ পড়তে 
-এবং পরীক্ষায় অংশ নিতে পারেন।
+HSCianTV হলো একটি সম্পূর্ণ Online Course & Classroom Platform — যেটি YouTube-এর
+মতো ভিডিও স্ট্রিমিং, কোর্স ম্যানেজমেন্ট, এক্সাম সিস্টেম, পেমেন্ট ভেরিফিকেশন,
+ডিভাইস কন্ট্রোল সবকিছু সাপোর্ট করে।
 
 ================================================================================
-                              🔑 Firebase কনফিগারেশন
+                              প্রধান ফিচারসমূহ
 ================================================================================
 
-এই অ্যাপে ২টি Firebase প্রজেক্ট ব্যবহার করা হয়েছে:
-
-1️⃣ মূল Firebase (hsciantv):
-   - Authentication (লগইন/রেজিস্ট্রেশন)
-   - Firestore Database (ইউজার, কোর্স, ভিডিও, সেটিংস)
-   - প্রজেক্ট: hsciantv.firebaseapp.com
-
-2️⃣ পরীক্ষা Firebase (exam-85146):
-   - শুধুমাত্র পরীক্ষার ডাটা সংরক্ষণ
-   - প্রজেক্ট: exam-85146.firebaseapp.com
-
-ImgBB API: ইমেজ হোস্টিং এর জন্য ব্যবহৃত হয়
-
-================================================================================
-                        📊 Firebase ফ্রি প্ল্যান সীমা (Spark Plan)
-================================================================================
-
-প্রতিটি Firebase প্রজেক্টে ফ্রি প্ল্যানে যা পাবেন:
-
-📌 Firestore Database:
-   - স্টোরেজ: 1 GB
-   - ডকুমেন্ট Read: 50,000/দিন
-   - ডকুমেন্ট Write: 20,000/দিন
-   - ডকুমেন্ট Delete: 20,000/দিন
-
-📌 Authentication:
-   - সীমাহীন ইউজার তৈরি (কোনো লিমিট নেই)
-   - Email/Password auth ফ্রি
-   - Password Reset ফ্রি
-
-📌 ব্যবহারিক সীমা (আনুমানিক):
-   - ~200-500 একটিভ স্টুডেন্ট আরামে চলবে
-   - ~50-100 কোর্স রাখা যাবে
-   - ~1000+ ভিডিও রাখা যাবে
-   - ~500+ পরীক্ষা রাখা যাবে
-   - যদি 500+ স্টুডেন্ট একসাথে ব্যবহার করে তাহলে দৈনিক Read লিমিট 
-     ক্রস হতে পারে। সেক্ষেত্রে Blaze Plan (pay-as-you-go) এ যেতে হবে।
-
-📌 ImgBB API:
-   - ফ্রি প্ল্যানে সীমাহীন ইমেজ আপলোড
-   - কোনো স্টোরেজ লিমিট নেই
-
-📌 YouTube ভিডিও:
-   - YouTube এ হোস্ট করা হয়, তাই কোনো ব্যান্ডউইথ খরচ নেই
-   - সীমাহীন ভিডিও এম্বেড করা যাবে
-
-📌 ২টি Firebase ব্যবহারের সুবিধা:
-   - মূল ডাটা ও পরীক্ষার ডাটা আলাদা থাকায় Read/Write লিমিট ভাগ হয়
-   - মোট: 1,00,000 Read/দিন এবং 40,000 Write/দিন
+✅ YouTube-এর মতো ভিডিও প্লেয়ার (Custom Controls, Speed 0.25x-2x, Seek ±10s)
+✅ কোর্স ভিত্তিক ভিডিও অর্গানাইজেশন (Subject → Chapter → Video)
+✅ MCQ এক্সাম সিস্টেম (অটো গ্রেডিং, টাইমার, সিকিউরিটি)
+✅ 2-ডিভাইস লগইন লিমিট (পাইরেসি প্রোটেকশন)
+✅ পেমেন্ট ভেরিফিকেশন সিস্টেম (স্ক্রিনশট + ট্রানজেকশন আইডি)
+✅ সম্পূর্ণ Admin Panel (Users, Courses, Videos, Exams, Settings)
+✅ PWA সাপোর্ট (Install as App)
+✅ Dark/Light থিম
+✅ মোবাইল-ফার্স্ট ডিজাইন
+✅ AI চ্যাটবট (Floating Assistant)
+✅ Data Export/Import (JSON)
+✅ Content Protection (Copy/Select Disabled)
 
 ================================================================================
-                              👤 ইউজার রোল ও অ্যাকসেস
+                              ইউজার প্যানেল
 ================================================================================
 
-দুই ধরনের ইউজার আছে:
+──── রেজিস্ট্রেশন ফ্লো ────
+1. ইউজার রেজিস্ট্রেশন ফর্ম পূরণ করবে (নাম, ইমেইল, পাসওয়ার্ড)
+2. কোর্স ড্রপডাউন থেকে কোর্স সিলেক্ট
+3. পেমেন্ট মেথড দেখে টাকা পাঠাবে
+4. Transaction ID ও Screenshot দিবে
+5. রেজিস্ট্রেশনের পর status: pending হবে
+6. Admin অ্যাপ্রুভ করলে কোর্স কন্টেন্ট দেখতে পারবে
 
-1️⃣ অ্যাডমিন (Admin):
-   - সবকিছু ম্যানেজ করার সম্পূর্ণ ক্ষমতা
-   - Firestore এ role: "admin" সেট করতে হবে ম্যানুয়ালি
+──── ডিভাইস লগইন লজিক ────
+- লগইন করলে deviceIds অ্যারেতে ডিভাইস যোগ হবে
+- সর্বোচ্চ ২টি ডিভাইস
+- ৩য় ডিভাইসে লগইন করলে আগের সব ডিভাইস ক্লিয়ার হবে
+- GlobalSecurity কম্পোনেন্ট রিয়েল-টাইমে ডিভাইস চেক করে
 
-2️⃣ স্টুডেন্ট (Student):
-   - কোর্সে এনরোল করে কন্টেন্ট দেখতে পারবে
-   - রেজিস্ট্রেশনের পর অ্যাডমিনের অনুমোদন প্রয়োজন
+──── Classroom (ক্লাসরুম) পেজ ────
+- Subject Chips (হরাইজন্টাল স্ক্রলেবল ফিল্টার)
+- Chapter Chips (সাবজেক্ট সিলেক্ট করলে দেখাবে)
+- Video Grid (1/2/3 কলাম — মোবাইল/ট্যাবলেট/ডেস্কটপ)
+- Thumbnail + Title
 
-📌 স্টুডেন্ট স্ট্যাটাস:
-   - pending: রেজিস্ট্রেশনের পর, অনুমোদনের অপেক্ষায়
-   - approved: অ্যাডমিন অনুমোদন করেছে, সব কন্টেন্ট দেখতে পারবে
-   - rejected: অ্যাডমিন প্রত্যাখ্যান করেছে
-   - suspended: অ্যাকাউন্ট সাসপেন্ড করা হয়েছে
+──── ভিডিও প্লেয়ার ────
+- YouTube IFrame API ব্যবহার
+- কাস্টম কন্ট্রোলস (Play/Pause, Seek ±10s, Speed, Fullscreen)
+- মোবাইলে Double-tap Seek (বাম → -10s, ডান → +10s)
+- Keyboard Shortcuts: Space/K (Play), ←/J (-10s), →/L (+10s), F (Fullscreen)
+- Playback Speed: 1x → 1.25x → 1.5x → 1.75x → 2x
+- Previous/Next Video (একই সাবজেক্ট)
+- PDF ডাউনলোড বাটন
+- More Videos সেকশনে Chapter ফিল্টার
+- ডেস্কটপে: বামে ভিডিও, ডানে More Videos সাইডবার
 
-================================================================================
-                          📱 ডিভাইস লগইন লিমিট (সর্বোচ্চ ২টি)
-================================================================================
+──── এক্সাম সিস্টেম ────
+- MCQ পরীক্ষা (Multiple Choice Questions)
+- টাইমার — সময় শেষ হলে অটো সাবমিট
+- ফলাফল দেখা — সঠিক/ভুল উত্তর হাইলাইট
+- পাস/ফেইল স্ট্যাটাস
+- এক্সাম সিকিউরিটি (ট্যাব সুইচ ডিটেকশন)
 
-- একজন ইউজার সর্বোচ্চ ২টি ডিভাইসে একসাথে লগইন থাকতে পারবে
-- ৩য় ডিভাইসে লগইন করলে আগের সব ডিভাইস থেকে অটো লগআউট হবে
-- প্রতি ৬০ সেকেন্ডে সেশন চেক হয়
-- এটি কোর্সের কন্টেন্ট শেয়ারিং রোধ করতে সাহায্য করে
+──── AI Assistant (ফ্লোটিং চ্যাটবট) ────
+- কোর্স তথ্য জানানো
+- পেমেন্ট তথ্য দেখানো
+- এনরোলমেন্ট গাইড
+- যোগাযোগ তথ্য
+- WhatsApp Direct Message
 
-================================================================================
-                    🏠 স্টুডেন্ট সাইড - পেজ ও ফিচার বিবরণ
-================================================================================
-
-─────────────────────────────────────
-1. হোমপেজ (Homepage)
-─────────────────────────────────────
-- সকল একটিভ কোর্স কার্ড আকারে দেখায়
-- প্রতিটি কার্ডে: থাম্বনেইল, কোর্সের নাম, মূল্য, "View Details" বাটন
-- লগইন ছাড়াই দেখা যায় (পাবলিক পেজ)
-
-─────────────────────────────────────
-2. কোর্স ডিটেইলস পেজ
-─────────────────────────────────────
-- কোর্সের সম্পূর্ণ তথ্য দেখায়:
-  • থাম্বনেইল ইমেজ
-  • কোর্সের নাম ও বিবরণ
-  • মূল্য
-  • সাবজেক্ট লিস্ট
-  • ইন্সট্রাক্টর তথ্য (ছবি সহ)
-  • এনরোল্ড স্টুডেন্ট সংখ্যা
-  • ক্লাস রুটিন PDF
-- "Enroll Now" বাটন:
-  • লগইন না থাকলে → লগইন পেজে যাবে
-  • এনরোল্ড থাকলে → My Courses এ যাবে
-  • এনরোল্ড না থাকলে → এনরোলমেন্ট ফ্লো শুরু হবে
-- পেমেন্ট মেথড ও নম্বর দেখায় (কপি করা যায়)
-
-─────────────────────────────────────
-3. অথেন্টিকেশন পেজ (Login/Register)
-─────────────────────────────────────
-📌 রেজিস্ট্রেশন:
-  - পূর্ণ নাম
-  - ইমেইল
-  - পাসওয়ার্ড
-  - কোর্স সিলেক্ট (ড্রপডাউন)
-  - পেমেন্ট মেথড (bKash/Nagad ইত্যাদি - অ্যাডমিন সেট করে)
-  - পেমেন্ট নম্বর (যে নম্বর থেকে পেমেন্ট করেছে)
-  - ট্রান্সাকশন ID
-  - পেমেন্ট স্ক্রিনশট (ইমেজ আপলোড/URL)
-  - রেজিস্ট্রেশনের পর স্ট্যাটাস "pending" হয়
-  - অ্যাডমিনের অনুমোদনের অপেক্ষায় থাকে
-
-📌 লগইন:
-  - ইমেইল ও পাসওয়ার্ড
-  - "Forgot Password" অপশন
-  - স্ট্যাটাস চেক করে:
-    • approved → অ্যাপে প্রবেশ
-    • pending → "অনুমোদনের অপেক্ষায়" মেসেজ
-    • suspended → "অ্যাকাউন্ট সাসপেন্ড" মেসেজ
-
-─────────────────────────────────────
-4. My Courses পেজ
-─────────────────────────────────────
-- এনরোল্ড কোর্সের সকল ভিডিও দেখায়
-- সাবজেক্ট চিপ স্ক্রলবার (হরাইজন্টাল):
-  • প্রতিটি চিপ = একটি সাবজেক্ট
-  • চিপে ক্লিক করলে সেই সাবজেক্টের ভিডিও ফিল্টার হয়
-- চ্যাপ্টার অনুযায়ী ভিডিও গ্রুপিং
-- ভিডিও কার্ডে ক্লিক করলে ভিডিও প্লেয়ার খোলে
-- ডেস্কটপে YouTube স্টাইল সাইডবার থাকে
-
-─────────────────────────────────────
-5. ভিডিও প্লেয়ার পেজ
-─────────────────────────────────────
-- কাস্টম ভিডিও প্লেয়ার (YouTube ব্র্যান্ডিং লুকানো)
-- কন্ট্রোল:
-  • Play/Pause
-  • Seek bar
-  • Playback Speed (1x, 1.25x, 1.5x, 2x)
-  • Fullscreen
-  • Volume
-- কিবোর্ড শর্টকাট:
-  • Space → Play/Pause
-  • ← → → 10 সেকেন্ড seek
-  • ↑ ↓ → Volume
-  • F → Fullscreen
-  • M → Mute/Unmute
-- মোবাইল জেসচার:
-  • ডাবল ট্যাপ বাম/ডান → 10 সেকেন্ড seek
-  • সোয়াইপ → Volume/Brightness
-- "Previous" ও "Next" ভিডিও বাটন
-- PDF বাটন (Google Drive PDF খোলে)
-- "More Videos" সেকশন (একই সাবজেক্টের প্লেলিস্ট)
-- কন্টেন্ট প্রোটেকশন (রাইট ক্লিক, কপি বন্ধ)
-
-─────────────────────────────────────
-6. প্রোফাইল পেজ
-─────────────────────────────────────
-- ইউজারের নাম, ইমেইল
-- এনরোল্ড কোর্স
-- All Materials লিংক (Google Drive)
-- Class Routine PDF
-- Discussion Groups
-- Reset Password বাটন
-- Logout বাটন
-
-─────────────────────────────────────
-7. পরীক্ষা (Exams) পেজ
-─────────────────────────────────────
-- এনরোল্ড কোর্সের সকল পরীক্ষা দেখায়
-- পরীক্ষার স্ট্যাটাস:
-  • Upcoming: শুরু হয়নি
-  • Live: চলছে, অংশ নেওয়া যাবে
-  • Ended: শেষ হয়েছে
-- পরীক্ষায় অংশ নেওয়ার সময়:
-  • MCQ: অপশন সিলেক্ট করে উত্তর দিতে হয়
-  • Written: ছবি আপলোড করে উত্তর দিতে হয়
-  • টাইমার চলে, সময় শেষে অটো সাবমিট
-  • নেগেটিভ মার্কিং সাপোর্ট
-  • পাশ মার্ক সেট করা যায়
-- রেজাল্ট:
-  • MCQ: তাৎক্ষণিক রেজাল্ট
-  • Written: অ্যাডমিন গ্রেডিং করার পর রেজাল্ট
-
-─────────────────────────────────────
-8. সাইড ড্রয়ার / হ্যামবার্গার মেনু
-─────────────────────────────────────
-- Home
-- My Courses
-- Profile
-- Exams
-- Discussion Groups (কোর্সের গ্রুপ লিংক)
-- Class Routine PDF
-- All Materials
-- Useful Links (অ্যাডমিন সেট করে)
-- Follow Us (সোশ্যাল মিডিয়া লিংক)
-- Theme Toggle (Light/Dark)
-- Share App
-- Install App (PWA)
+──── প্রোফাইল পেজ ────
+- নাম, ইমেইল, কোর্স তথ্য
+- Enrolled Courses তালিকা
+- Active Course সুইচ
+- লগআউট বাটন
 
 ================================================================================
-                    🔧 অ্যাডমিন প্যানেল - পেজ ও ফিচার বিবরণ
+                              অ্যাডমিন প্যানেল
 ================================================================================
 
-অ্যাডমিন প্যানেলে যেতে: /admin রাউটে যেতে হবে
-শুধুমাত্র role: "admin" ইউজাররা অ্যাকসেস পাবে
+──── কিভাবে Admin হবেন? ────
+1. Firebase Console → Firestore → users collection
+2. আপনার user document-এ role: "admin" সেট করুন
+3. status: "approved" সেট করুন
 
-─────────────────────────────────────
-A. ড্যাশবোর্ড
-─────────────────────────────────────
-- স্ট্যাট কার্ড:
-  • মোট স্টুডেন্ট (approved)
-  • পেন্ডিং স্টুডেন্ট
-  • মোট কোর্স
-  • মোট ভিডিও
-- শর্টকাট বাটন:
-  • YouTube Channel
-  • Google Drive
+──── Dashboard ────
+- Total Users, Pending Users, Total Courses, Total Videos, Total Exams
+- Quick Action Cards (শর্টকাট বাটন)
 
-─────────────────────────────────────
-B. ইউজার ম্যানেজমেন্ট
-─────────────────────────────────────
-📌 Pending Students:
-  - পেন্ডিং স্টুডেন্টদের লিস্ট
-  - প্রতিটিতে: নাম, ইমেইল, কোর্স, পেমেন্ট তথ্য, স্ক্রিনশট
-  - "Approve" বাটন → স্ট্যাটাস approved হয়
-  - "Reject/Delete" বাটন → ইউজার ডিলিট হয়
+──── User Management ────
+- সকল ইউজার টেবিল (Name, Email, Course, Status, Date)
+- কোর্স ভিত্তিক ফিল্টার
+- Actions: Approve, Reject, Activate/Deactivate, Delete
+- পেমেন্ট স্ক্রিনশট দেখার সুবিধা
+- Search ফাংশন
 
-📌 All Users:
-  - সকল ইউজারের টেবিল/লিস্ট
-  - কোর্স অনুযায়ী ফিল্টার
-  - নাম/ইমেইল দিয়ে সার্চ
-  - প্রতি ইউজারে: Activate, Deactivate, Delete অপশন
+──── Course Management ────
+- কোর্স তৈরি/এডিট/ডিলিট
+- সাবজেক্ট ও চ্যাপ্টার যোগ (nested structure)
+- ইন্সট্রাক্টর যোগ (নাম, সাবজেক্ট, ছবি)
+- ডিসকাশন গ্রুপ (Facebook, Telegram লিংক)
+- রুটিন PDF URL
+- All Materials লিংক
+- Thumbnail, Price, Overview Points
+- কোর্স অর্ডারিং (Up/Down arrows)
 
-─────────────────────────────────────
-C. কোর্স ম্যানেজমেন্ট
-─────────────────────────────────────
-- কোর্স যুক্ত করা:
-  • কোর্সের নাম
-  • থাম্বনেইল (ImgBB/URL)
-  • মূল্য
-  • Overview পয়েন্ট (একাধিক)
-  • সাবজেক্ট ও চ্যাপ্টার (ড্র্যাগ ও অর্ডার সাপোর্ট)
-  • ইন্সট্রাক্টর (নাম, সাবজেক্ট, ছবি)
-  • Discussion Groups (নাম ও লিংক)
-  • Routine PDF URL
-  • All Materials Link
-- কোর্স এডিট/ডিলিট
-- কোর্স অর্ডার পরিবর্তন (up/down)
+──── Video Management ────
+- কোর্স → সাবজেক্ট → চ্যাপ্টার সিলেক্ট
+- Video Title, YouTube URL, PDF URL, Thumbnail URL
+- ভিডিও অর্ডারিং
+- এডিট/ডিলিট
+- Bulk upload সমর্থিত নয় (একটি একটি করে যোগ)
 
-─────────────────────────────────────
-D. ভিডিও ম্যানেজমেন্ট
-─────────────────────────────────────
-📌 Quick Add Video:
-  - কোর্স সিলেক্ট
-  - সাবজেক্ট সিলেক্ট
-  - চ্যাপ্টার সিলেক্ট (ঐচ্ছিক)
-  - ভিডিও টাইটেল
-  - YouTube URL
-  - PDF URL (ঐচ্ছিক)
-  - থাম্বনেইল URL
+──── Exam Management ────
+- MCQ এক্সাম তৈরি
+- কোর্স ও সাবজেক্ট সিলেক্ট
+- প্রশ্ন যোগ (4 অপশন, সঠিক উত্তর মার্ক)
+- সময় সীমা সেট (মিনিটে)
+- পাস মার্কস সেট
+- Active/Inactive টগল
 
-📌 All Videos:
-  - কোর্স ও সাবজেক্ট অনুযায়ী ফিল্টার
-  - ভিডিও এডিট/ডিলিট
-  - ভিডিও অর্ডার পরিবর্তন
+──── App Settings ────
+- App Name ও Logo পরিবর্তন
+- Social Media Links (Facebook, YouTube, WhatsApp, Telegram)
+- Payment Methods (নাম + নম্বর, একাধিক যোগ করা যায়)
+- Useful Links (যেকোনো কাস্টম লিংক)
+- YouTube Upload Link, Google Drive Link (Admin shortcuts)
 
-─────────────────────────────────────
-E. পরীক্ষা ম্যানেজমেন্ট
-─────────────────────────────────────
-📌 পরীক্ষা তৈরি:
-  - কোর্স সিলেক্ট
-  - পরীক্ষার শিরোনাম
-  - পরীক্ষার ধরন: MCQ বা Written
-  - সময়কাল (মিনিট)
-  - মোট মার্কস
-  - নেগেটিভ মার্কিং (প্রতি ভুলে কাটা মার্কস)
-  - পাশ মার্ক
-  - শুরু ও শেষ সময়
-  - প্রশ্ন যুক্ত করা:
-    • MCQ: প্রশ্ন + ৪টি অপশন + সঠিক উত্তর + মার্কস
-    • Written: প্রশ্ন + সঠিক উত্তর (টেক্সট/ইমেজ) + মার্কস
-    • প্রশ্নে ইমেজ যুক্ত করা যায়
-
-📌 পরীক্ষার রেজাল্ট:
-  - সকল সাবমিশন দেখা যায়
-  - MCQ: অটোমেটিক গ্রেডিং
-  - Written: ম্যানুয়াল গ্রেডিং (অ্যাডমিন মার্কস দেবে)
-  - রেজাল্ট পাবলিশ করা যায়
-  - পাশ/ফেল স্ট্যাটাস
-
-📌 পরীক্ষা ইমপোর্ট/এক্সপোর্ট:
-  - JSON ফরমেটে পরীক্ষা এক্সপোর্ট
-  - JSON ফাইল থেকে পরীক্ষা ইমপোর্ট
-
-─────────────────────────────────────
-F. সেটিংস
-─────────────────────────────────────
-📌 App Info:
-  - অ্যাপের নাম (টপ নেভ ও কার্ডে দেখায়)
-  - অ্যাপ লোগো URL
-  - YouTube Channel লিংক
-  - Google Drive লিংক
-
-📌 Payment Methods:
-  - পেমেন্ট মেথড নাম (যেমন: bKash, Nagad)
-  - নম্বর
-  - একাধিক মেথড যোগ করা যায়
-
-📌 Social Media Links:
-  - প্ল্যাটফর্ম নাম ও লিংক
-  - একাধিক যোগ করা যায়
-
-📌 Useful Links:
-  - লিংকের নাম ও URL
-  - স্টুডেন্ট সাইডবারে দেখায়
-
-─────────────────────────────────────
-G. ডাটা ইমপোর্ট/এক্সপোর্ট
-─────────────────────────────────────
-- Export: সকল ডাটা (users, courses, videos, settings) JSON ফাইলে ডাউনলোড
-- Import: JSON ফাইল আপলোড করে ডাটা মার্জ (আগের ডাটার সাথে যুক্ত হবে)
-- কনফার্মেশন ডায়ালগ ইমপোর্টের আগে
+──── Data Export/Import ────
+- Export: সম্পূর্ণ ডাটাবেস JSON ফাইলে ডাউনলোড
+- Import: JSON ফাইল আপলোড করে ডাটা রিস্টোর
+- Collections: users, courses, videos, enrollRequests, exams, examResults, settings
+- ⚠️ Import করলে পুরানো ডেটা overwrite হবে
 
 ================================================================================
-                          🛡️ কন্টেন্ট প্রোটেকশন
+                        Firebase Database Structure
 ================================================================================
 
-- রাইট ক্লিক বন্ধ
-- টেক্সট সিলেকশন বন্ধ
-- কপি শর্টকাট (Ctrl+C, Ctrl+U, Ctrl+S) বন্ধ
-- Developer Tools শর্টকাট (F12, Ctrl+Shift+I) বন্ধ
-- YouTube ভিডিও সরাসরি খোলা যাবে না
-- "Watch on YouTube" বাটন লুকানো
-- ভিডিও URL এক্সপোজ হবে না
+──── Collections Overview ────
 
-📝 দ্রষ্টব্য: এই প্রোটেকশন অ্যাডমিন প্যানেলে প্রযোজ্য নয়
+Collection        | Document ID         | Description
+users             | Firebase Auth UID   | ইউজার প্রোফাইল, ডিভাইস তথ্য
+courses           | Auto ID            | কোর্স তথ্য, সাবজেক্ট, ইন্সট্রাক্টর
+videos            | Auto ID            | ভিডিও তথ্য
+enrollRequests    | Auto ID            | এনরোলমেন্ট রিকোয়েস্ট
+exams             | Auto ID            | এক্সাম প্রশ্ন ও সেটিংস
+examResults       | Auto ID            | এক্সাম ফলাফল
+settings          | main_settings      | অ্যাপ সেটিংস
 
-================================================================================
-                          🌙 থিম (Light/Dark Mode)
-================================================================================
+──── users Collection ────
+{
+  name: string,
+  email: string,
+  role: "student" | "admin",
+  status: "pending" | "approved" | "rejected" | "suspended",
+  enrolledCourses: [
+    { courseId, courseName, courseThumbnail, enrolledAt }
+  ],
+  activeCourseId: string,
+  paymentInfo: { method, paymentNumber, transactionId, screenshot },
+  deviceIds: [string],
+  createdAt: timestamp
+}
 
-- Light ও Dark মোড সাপোর্ট
-- localStorage এ সেভ থাকে
-- টপ নেভ ও সাইডবার থেকে টগল করা যায়
+──── courses Collection ────
+{
+  courseName: string,
+  thumbnail: string (URL),
+  price: number,
+  overview: [string],
+  subjects: [
+    {
+      subjectId: UUID,
+      subjectName: string,
+      chapters: [{ chapterId: UUID, chapterName: string }]
+    }
+  ],
+  instructors: [{ name, subject, image }],
+  discussionGroups: [{ name, link }],
+  routinePDF: string (URL),
+  allMaterialsLink: string (URL),
+  order: number,
+  createdAt: timestamp
+}
 
-================================================================================
-                          📲 PWA (Progressive Web App)
-================================================================================
+──── videos Collection ────
+{
+  courseId: string,
+  courseName: string,
+  subjectId: string,
+  subjectName: string,
+  chapterId: string (optional),
+  chapterName: string (optional),
+  title: string,
+  thumbnail: string (URL),
+  videoURL: string (YouTube URL),
+  pdfURL: string (URL),
+  order: number,
+  createdAt: timestamp
+}
 
-- মোবাইল ও ডেস্কটপে ইন্সটল করা যায়
-- অফলাইন ক্যাশিং সাপোর্ট
-- টপ নেভে Install বাটন আছে
-- সাইডবারে Install App অপশন আছে
+──── enrollRequests Collection ────
+{
+  userId: string,
+  name: string,
+  email: string,
+  courseId: string,
+  courseName: string,
+  paymentMethod: string,
+  paymentNumber: string,
+  transactionId: string,
+  screenshot: string (URL),
+  status: "pending" | "approved" | "rejected",
+  createdAt: timestamp
+}
 
-================================================================================
-                    🔥 Firestore ডাটা স্ট্রাকচার
-================================================================================
+──── exams Collection ────
+{
+  title: string,
+  courseId: string,
+  subjectId: string,
+  subjectName: string,
+  duration: number (minutes),
+  passingScore: number,
+  questions: [
+    { id, question, options: [4 strings], correctAnswer: 0-3 }
+  ],
+  isActive: boolean,
+  createdAt: timestamp
+}
 
-📌 মূল Firebase (hsciantv):
-
-/users/{userId}
-  - name, email, role, status
-  - enrolledCourses: [{ courseId, courseName, courseThumbnail, enrolledAt }]
-  - activeCourseId
-  - paymentInfo: { method, paymentNumber, transactionId, screenshot }
-  - sessions: [{ sessionId, createdAt }]
-  - createdAt
-
-/courses/{courseId}
-  - courseName, thumbnail, price, overview[]
-  - subjects: [{ subjectId, subjectName, chapters: [{ chapterId, chapterName }] }]
-  - instructors: [{ name, subject, image }]
-  - discussionGroups: [{ name, link }]
-  - routinePDF, allMaterialsLink
-  - createdAt
-
-/videos/{videoId}
-  - courseId, courseName, subjectId, subjectName
-  - chapterId, chapterName
-  - title, thumbnail, videoURL, pdfURL
-  - order, createdAt
-
-/enrollRequests/{requestId}
-  - userId, name, email, courseId, courseName
-  - paymentMethod, paymentNumber, transactionId, screenshot
-  - status, createdAt
-
-/settings/app
-  - appName, appLogo, youtubeChannel, googleDrive
-  - paymentMethods: [{ name, number }]
-  - socialLinks: [{ name, link }]
-  - usefulLinks: [{ name, link }]
-
-📌 পরীক্ষা Firebase (exam-85146):
-
-/exams/{examId}
-  - courseId, courseName, title, type (mcq/written)
-  - duration, totalMarks, negativeMark, passMark
-  - startTime, endTime
-  - questions: [{ id, questionText, questionImage, type, options, correctAnswer, marks }]
-  - resultPublished, createdAt
-
-/submissions/{submissionId}
-  - examId, userId, userName, userEmail, courseId
-  - answers: [{ questionId, selectedOption, writtenImageUrl, isCorrect, marks }]
-  - totalMarks, obtainedMarks, correctCount, wrongCount
-  - passed, writtenGraded, submittedAt
-
-================================================================================
-                          📋 অ্যাডমিন কি কি করবে?
-================================================================================
-
-1. প্রথমে সেটিংস সেট করুন:
-   - অ্যাপের নাম ও লোগো
-   - পেমেন্ট মেথড ও নম্বর (bKash/Nagad ইত্যাদি)
-   - সোশ্যাল মিডিয়া লিংক
-   - YouTube Channel ও Google Drive লিংক
-   - দরকারি লিংক (Useful Links)
-
-2. কোর্স তৈরি করুন:
-   - কোর্সের নাম, থাম্বনেইল, মূল্য
-   - সাবজেক্ট ও চ্যাপ্টার যুক্ত করুন
-   - ইন্সট্রাক্টর তথ্য যুক্ত করুন
-   - Discussion Group লিংক যুক্ত করুন
-
-3. ভিডিও আপলোড করুন:
-   - YouTube এ ভিডিও আপলোড করুন (Unlisted রাখুন)
-   - অ্যাপে YouTube URL দিয়ে ভিডিও যুক্ত করুন
-   - প্রয়োজনে PDF URL যুক্ত করুন
-
-4. স্টুডেন্ট অনুমোদন:
-   - Pending Students পেজে নতুন রেজিস্ট্রেশন দেখুন
-   - পেমেন্ট তথ্য ও স্ক্রিনশট যাচাই করুন
-   - Approve বা Reject করুন
-
-5. পরীক্ষা তৈরি করুন:
-   - কোর্স সিলেক্ট করে পরীক্ষা তৈরি করুন
-   - MCQ বা Written টাইপ সেট করুন
-   - প্রশ্ন, অপশন, সঠিক উত্তর যুক্ত করুন
-   - সময়সীমা নির্ধারণ করুন
-
-6. রেজাল্ট ম্যানেজমেন্ট:
-   - MCQ রেজাল্ট অটোমেটিক তৈরি হয়
-   - Written পরীক্ষার জন্য ম্যানুয়ালি মার্কস দিন
+──── settings/main_settings ────
+{
+  appName: string,
+  appLogo: string,
+  socialLinks: [{ name, link }],
+  paymentMethods: [{ name, number }],
+  usefulLinks: [{ name, link }],
+  youtubeChannel: string,
+  googleDrive: string
+}
 
 ================================================================================
-                          📋 স্টুডেন্ট কি কি করবে?
+                     Firebase Firestore Security Rules
 ================================================================================
 
-1. অ্যাপ ওপেন করুন ও কোর্স দেখুন
-2. পছন্দের কোর্সে "View Details" এ ক্লিক করুন
-3. "Enroll Now" ক্লিক করে রেজিস্ট্রেশন করুন:
-   - তথ্য পূরণ করুন
-   - নির্দেশিত নম্বরে পেমেন্ট করুন
-   - ট্রান্সাকশন ID ও স্ক্রিনশট দিন
-4. অ্যাডমিনের অনুমোদনের জন্য অপেক্ষা করুন
-5. অনুমোদন পেলে:
-   - My Courses এ ভিডিও দেখুন
-   - PDF ডাউনলোড করুন
-   - পরীক্ষায় অংশ নিন
-   - Discussion Group এ যোগ দিন
-6. প্রোফাইল থেকে পাসওয়ার্ড রিসেট বা লগআউট করুন
+──── উভয় Firebase প্রজেক্টের জন্য একই Rules ────
+
+Firebase Console → Firestore Database → Rules ট্যাবে নিচের কোড পেস্ট করে
+"Publish" বাটনে ক্লিক করুন:
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuth() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    function isApproved() {
+      return isAuth() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'approved';
+    }
+
+    // Users — নিজের ডকুমেন্ট পড়তে/লিখতে পারবে, Admin সব পারবে
+    match /users/{userId} {
+      allow read: if isAuth() && (request.auth.uid == userId || isAdmin());
+      allow create: if isAuth() && request.auth.uid == userId;
+      allow update: if isAuth() && (request.auth.uid == userId || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // Courses — সবাই পড়তে পারবে (পাবলিক), শুধু Admin লিখতে পারবে
+    match /courses/{courseId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Videos — শুধু Approved ইউজার পড়তে পারবে, Admin লিখতে পারবে
+    match /videos/{videoId} {
+      allow read: if isAuth() && isApproved();
+      allow write: if isAdmin();
+    }
+
+    // Enroll Requests — নিজের রিকোয়েস্ট পড়তে পারবে, Admin সব পারবে
+    match /enrollRequests/{requestId} {
+      allow read: if isAuth() &&
+        (resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isAuth();
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Exams — Approved ইউজার পড়তে পারবে, Admin লিখতে পারবে
+    match /exams/{examId} {
+      allow read: if isAuth() && isApproved();
+      allow write: if isAdmin();
+    }
+
+    // Exam Results — নিজের রেজাল্ট পড়তে/তৈরি করতে পারবে
+    match /examResults/{resultId} {
+      allow read: if isAuth() &&
+        (resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isAuth() && isApproved();
+      allow update: if false;
+      allow delete: if isAdmin();
+    }
+
+    // Settings — সবাই পড়তে পারবে, শুধু Admin লিখতে পারবে
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}
 
 ================================================================================
-                          🎯 পরীক্ষা কিভাবে কাজ করে?
+                        Capacity & Daily Limits
 ================================================================================
 
-📌 অ্যাডমিনের জন্য:
-1. Admin Panel → Exams → Add Exam
-2. কোর্স সিলেক্ট করুন
-3. পরীক্ষার তথ্য দিন (টাইটেল, সময়কাল, মার্কস, পাশ মার্ক)
-4. শুরু ও শেষ সময় সেট করুন
-5. প্রশ্ন যুক্ত করুন:
-   - MCQ: প্রশ্ন + ৪টি অপশন + সঠিক অপশন নম্বর
-   - Written: প্রশ্ন + মডেল উত্তর
-6. পরীক্ষা সেভ করুন
-7. সময় হলে স্টুডেন্টরা অটো অ্যাকসেস পাবে
+──── Firebase Free (Spark) Plan Limits ────
 
-📌 স্টুডেন্টের জন্য:
-1. Exams পেজে যান
-2. "Live" পরীক্ষায় "Start Exam" ক্লিক করুন
-3. প্রশ্নের উত্তর দিন:
-   - MCQ: অপশন সিলেক্ট করুন
-   - Written: খাতায় লিখে ছবি তুলে আপলোড করুন
-4. সময় শেষ হলে অটো সাবমিট হবে বা "Submit" ক্লিক করুন
-5. MCQ রেজাল্ট তাৎক্ষণিক দেখবেন
-6. Written রেজাল্ট অ্যাডমিন চেক করার পর পাবেন
+Resource              | Daily Limit     | Monthly
+Firestore Reads       | 50,000/day      | ~1.5M/month
+Firestore Writes      | 20,000/day      | ~600K/month
+Firestore Deletes     | 20,000/day      | ~600K/month
+Storage               | 1 GB total      | —
+Auth Users            | Unlimited       | —
+Bandwidth             | 10 GB/month     | —
 
-📌 নেগেটিভ মার্কিং:
-- প্রতি ভুল MCQ উত্তরে নির্দিষ্ট মার্কস কাটা হয়
-- না দেওয়া প্রশ্নে মার্কস কাটা হয় না
+──── প্রতি ইউজার সেশনে আনুমানিক ব্যবহার ────
 
-📌 পরীক্ষার নিরাপত্তা:
-- ট্যাব পরিবর্তন করলে সতর্কতা
-- রাইট ক্লিক ও কপি বন্ধ
-- ডিভাইস তথ্য সংরক্ষণ
+Action              | Reads  | Writes
+Login               | ~5     | ~2
+Classroom ওপেন      | ~3     | 0
+ভিডিও দেখা          | ~4     | 0
+এক্সাম দেওয়া        | ~3     | ~2
+Home ব্রাউজ          | ~2     | 0
+মোট (গড়)           | ~17    | ~4
 
-================================================================================
-                          ⚠️ গুরুত্বপূর্ণ নোট
-================================================================================
+──── Daily Active Users (DAU) ক্যাপাসিটি ────
 
-1. অ্যাডমিন তৈরি করা:
-   - প্রথমে একটি অ্যাকাউন্ট রেজিস্টার করুন
-   - Firebase Console → Firestore → users → সেই ইউজারের ডকুমেন্ট
-   - role ফিল্ড "student" থেকে "admin" এ পরিবর্তন করুন
-   - status "pending" থেকে "approved" এ পরিবর্তন করুন
+Scenario                          | DAU Estimate
+Light Usage (5-10 ভিডিও/দিন)     | 200-300 ইউজার/দিন
+Medium Usage (10-20 ভিডিও/দিন)   | 100-150 ইউজার/দিন
+Heavy Usage (20+ ভিডিও/দিন)      | 50-80 ইউজার/দিন
 
-2. YouTube ভিডিও:
-   - ভিডিও Unlisted রাখুন (Public না করলেও চলবে)
-   - এতে সরাসরি YouTube এ সার্চ করে পাওয়া যাবে না
-   - শুধু অ্যাপের মাধ্যমে দেখা যাবে
+──── Data Capacity ────
 
-3. ব্যাকআপ:
-   - নিয়মিত Admin → Import/Export থেকে ডাটা এক্সপোর্ট করুন
-   - এতে ডাটা হারালে রিস্টোর করা যাবে
-
-4. Firebase Console:
-   - https://console.firebase.google.com/
-   - প্রজেক্ট: hsciantv (মূল) এবং exam-85146 (পরীক্ষা)
+Data Type              | Estimated Limit
+Total Users            | 5,000+ (Auth unlimited)
+Total Courses          | 50+
+Videos per Course      | 500+
+Total Videos           | 5,000+
+Exams                  | 500+
 
 ================================================================================
-                          💰 মূল্য নির্ধারণ পরামর্শ
+                    Firebase Free Plan Optimization Tips
 ================================================================================
 
-এই অ্যাপের বৈশিষ্ট্য বিবেচনায়:
-- সম্পূর্ণ কাস্টম LMS
-- PWA সাপোর্ট
-- কাস্টম ভিডিও প্লেয়ার
-- পরীক্ষা সিস্টেম (MCQ + Written)
-- ডিভাইস লগইন লিমিট
-- কন্টেন্ট প্রোটেকশন
-- ডাটা ইমপোর্ট/এক্সপোর্ট
-- ২টি Firebase প্রজেক্ট
+1. ✅ Memory Caching (ইতোমধ্যে Implemented)
+   - firestoreCache.ts — 5 মিনিট TTL ক্যাশ
+   - ~60-70% read কমায়
 
-প্রস্তাবিত মূল্য: ৳15,000 - ৳25,000 BDT
+2. Firestore Indexes তৈরি করুন (Firebase Console → Indexes)
+   - videos: courseId (ASC) + order (ASC)
+   - enrollRequests: userId (ASC) + courseId (ASC) + status (ASC)
+   - examResults: examId (ASC) + userId (ASC)
 
-মূল্য নির্ভর করবে:
-- ক্লায়েন্টের বাজেট
-- ভবিষ্যতে সাপোর্ট/মেইনটেনেন্স দেবেন কিনা
-- কাস্টমাইজেশন চাইলে অতিরিক্ত চার্জ
-- হোস্টিং সেটআপ সহ দিলে অতিরিক্ত
+3. Offline Persistence চালু করুন:
+   firebase.ts ফাইলে যোগ করুন:
+   import { enableIndexedDbPersistence } from "firebase/firestore";
+   enableIndexedDbPersistence(db).catch(() => {});
+
+4. Image Size ছোট রাখুন (200KB এর নিচে)
+
+5. ✅ imgBB ব্যবহার হচ্ছে (Firebase Storage নয়) — Storage সেভ
+
+6. ✅ Real-time Listener কমানো হয়েছে — বেশিরভাগ getDoc/getDocs ব্যবহার
+
+7. Blaze Plan (1000+ DAU হলে):
+   - $0.06/100K reads, $0.18/100K writes
+   - আনুমানিক $5-15/month
 
 ================================================================================
-                              END OF DOCUMENTATION
+                            App Pricing Estimate
 ================================================================================
+
+──── Development Cost Breakdown (BDT) ────
+
+Component                                          | Value (BDT)
+Authentication (Email/Password, Device Limit)      | ৳15,000 - ৳25,000
+User Panel (Registration, Classroom, Profile)      | ৳20,000 - ৳30,000
+Video Player (YouTube, Custom Controls, Speed)     | ৳15,000 - ৳25,000
+Admin Panel (Dashboard, Users, Courses, Videos)    | ৳30,000 - ৳45,000
+Exam System (MCQ, Timer, Auto-grading)             | ৳15,000 - ৳20,000
+Course Management (Subjects, Chapters, Groups)     | ৳15,000 - ৳20,000
+AI Chatbot (Floating Assistant)                    | ৳8,000 - ৳12,000
+PWA + Install                                     | ৳5,000 - ৳8,000
+Data Export/Import                                 | ৳5,000 - ৳8,000
+UI/UX Design (Dark/Light, Responsive)              | ৳15,000 - ৳25,000
+Content Protection                                 | ৳3,000 - ৳5,000
+Firebase Integration                               | ৳10,000 - ৳15,000
+
+──── Total Estimated Value ────
+
+Category                 | BDT                    | USD
+Minimum                  | ৳1,56,000              | $1,300
+Standard                 | ৳2,00,000 - ৳2,50,000  | $1,700 - $2,100
+Premium (with support)   | ৳3,00,000+             | $2,500+
+
+──── তুলনামূলক বাজার দর ────
+- Teachable/Thinkific: $39-119/month ($468-1428/year)
+- Custom LMS (India): $3,000-10,000
+- Similar BD platforms: ৳1,50,000 - ৳5,00,000
+
+──── মাসিক খরচ ────
+- Firebase Free Plan: ৳0/month
+- Firebase Blaze (1000+ DAU): ~৳500-1500/month
+- imgBB API: Free
+- Domain: ~৳1000/year
+- মোট (Free Plan): ৳0/month
+
+================================================================================
+                           Routes & Pages
+================================================================================
+
+Route                | Page                | Access
+/                    | Index Redirect      | Public
+/home                | All Courses         | Public
+/course/:id          | Course Details      | Public
+/auth                | Login/Register      | Public
+/classroom           | Classroom (Videos)  | Approved Users
+/video/:id           | Video Player        | Approved Users
+/exams               | Exam List           | Approved Users
+/exams/:id           | Take Exam           | Approved Users
+/profile             | User Profile        | Logged In
+/admin               | Admin Dashboard     | Admin
+/admin/users         | User Management     | Admin
+/admin/courses       | Course Management   | Admin
+/admin/videos        | Video Management    | Admin
+/admin/videos/add    | Add Video           | Admin
+/admin/exams         | Exam Management     | Admin
+/admin/exams/add     | Add Exam            | Admin
+/admin/settings      | App Settings        | Admin
+/admin/data          | Data Export/Import   | Admin
+
+================================================================================
+                            Contact & Support
+================================================================================
+
+Developer: Md Ridoan Mahmud Zisan
+Portfolio: https://ridoan-zisan.netlify.app
+
+এই ডকুমেন্টেশন সম্পূর্ণ প্ল্যাটফর্মের বর্তমান অবস্থা প্রতিফলিত করে।
