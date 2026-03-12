@@ -42,7 +42,7 @@ export default function AdminCoursesPage() {
   const [courseName, setCourseName] = useState("");
   const [thumbnailUrl, setThumbnailUrl] = useState("");
   const [price, setPrice] = useState(0);
-  const [endDate, setEndDate] = useState("");
+  
   const [overview, setOverview] = useState<string[]>([""]);
   const [subjects, setSubjects] = useState<Subject[]>([{ subjectId: crypto.randomUUID(), subjectName: "", chapters: [] }]);
   const [instructors, setInstructors] = useState<Instructor[]>([{ name: "", subject: "", image: "" }]);
