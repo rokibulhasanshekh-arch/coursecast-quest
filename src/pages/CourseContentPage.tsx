@@ -27,11 +27,6 @@ export default function CourseContentPage() {
       if (courseSnap.exists()) {
         const courseData = { id: courseSnap.id, ...courseSnap.data() } as Course;
         setCourse(courseData);
-        // Check if course is archived
-        if (courseData.archived || (courseData.endDate && courseData.endDate.toMillis() < Date.now())) {
-          setLoading(false);
-          return;
-        }
       }
 
       const q = query(collection(db, "videos"), where("courseId", "==", courseId));
@@ -49,18 +44,6 @@ export default function CourseContentPage() {
     return <div className="p-4"><Skeleton className="h-6 w-48 mb-3" /><div className="flex gap-2 pb-3">{Array.from({length:4}).map((_,i)=><Skeleton key={i} className="h-8 w-20 rounded-full" />)}</div><VideoGridSkeleton count={6} /></div>;
   }
 
-  const isArchived = course && (course.archived || (course.endDate && course.endDate.toMillis() < Date.now()));
-
-  if (isArchived) {
-    return (
-      <div className="p-4 text-center mt-8">
-        <div className="p-6 bg-accent/50 rounded-lg border border-border max-w-md mx-auto">
-          <p className="text-foreground font-medium">📦 কোর্স আর্কাইভড</p>
-          <p className="text-sm text-muted-foreground mt-1">এই কোর্সের মেয়াদ শেষ হয়ে গেছে। কন্টেন্ট আর অ্যাক্সেসযোগ্য নয়।</p>
-        </div>
-      </div>
-    );
-  }
 
   const filtered = activeSubject === "All" ? videos : videos.filter((v) => v.subjectName === activeSubject);
 

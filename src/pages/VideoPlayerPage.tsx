@@ -101,6 +101,8 @@ export default function VideoPlayerPage() {
         const v = await getCachedDoc<Video>(db, "videos", videoId);
         if (cancelled) return;
         if (!v) { setVideo(null); setLoading(false); return; }
+        
+        const prevSubjectId = video?.subjectId;
         setVideo(v);
 
         // Fetch chapters from course
@@ -118,7 +120,11 @@ export default function VideoPlayerPage() {
           .filter((vid) => vid.subjectId === v.subjectId);
         vids.sort((a, b) => (a.order || 0) - (b.order || 0));
         setRelatedVideos(vids);
-        setChapterFilter("All");
+        
+        // Only reset chapter filter when subject changes
+        if (prevSubjectId !== v.subjectId) {
+          setChapterFilter("All");
+        }
       } catch {
         if (!cancelled) setRelatedVideos([]);
       }
@@ -365,9 +371,9 @@ export default function VideoPlayerPage() {
                 </a>
               )}
               {!isMobile && (
-                <button onClick={() => navigate("/my-courses")}
+                <button onClick={() => navigate("/classroom")}
                   className="flex items-center gap-1 px-3 py-1.5 text-sm rounded-md bg-accent border border-border text-foreground">
-                  <ArrowLeft className="h-4 w-4" /> My Courses
+                  <ArrowLeft className="h-4 w-4" /> Classroom
                 </button>
               )}
             </div>

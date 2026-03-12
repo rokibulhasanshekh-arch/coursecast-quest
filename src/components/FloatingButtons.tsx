@@ -21,7 +21,7 @@ type MenuScreen =
   | "enrollment-guide" 
   | "payment-info" 
   | "contact" 
-  | "my-courses" 
+  | "classroom" 
   | "my-course-detail"
   | "useful-links";
 
@@ -138,7 +138,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
       { match: ["এনরোল", "enroll", "ভর্তি", "admit", "admission"], reply: "📝 এনরোলমেন্ট প্রক্রিয়া দেখুন:", nav: "enrollment-guide" },
       { match: ["পেমেন্ট", "payment", "টাকা", "বিকাশ", "bkash", "নগদ", "nagad", "send money"], reply: "💳 পেমেন্ট তথ্য দেখুন:", nav: "payment-info" },
       { match: ["যোগাযোগ", "contact", "ফোন", "phone", "নাম্বার", "number", "সোশ্যাল", "social"], reply: "📞 যোগাযোগের তথ্য:", nav: "contact" },
-      { match: ["আমার কোর্স", "my course", "আমার", "enrolled"], reply: "🎓 আপনার কোর্সসমূহ:", nav: "my-courses" },
+      { match: ["আমার কোর্স", "my course", "আমার", "enrolled", "classroom", "ক্লাসরুম"], reply: "🎓 আপনার কোর্সসমূহ:", nav: "classroom" },
       { match: ["লিংক", "link", "দরকারি"], reply: "🔗 দরকারি লিংকসমূহ:", nav: "useful-links" },
       { match: ["হাই", "hi", "hello", "হ্যালো", "আসসালামু"], reply: "ওয়ালাইকুম আসসালাম! 😊 কিভাবে সাহায্য করতে পারি? নিচের অপশন থেকে বেছে নিন:" },
       { match: ["ধন্যবাদ", "thanks", "thank"], reply: "আপনাকেও ধন্যবাদ! 🙏 আর কোনো প্রশ্ন থাকলে জানাবেন।" },
@@ -191,7 +191,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
             <CapsuleButton icon={<CreditCard className="h-3.5 w-3.5" />} label="এনরোলমেন্ট গাইড" onClick={() => navigateTo("enrollment-guide")} />
             <CapsuleButton icon={<CreditCard className="h-3.5 w-3.5" />} label="পেমেন্ট তথ্য" onClick={() => navigateTo("payment-info")} />
             {user && enrolledCourseIds.length > 0 && (
-              <CapsuleButton icon={<GraduationCap className="h-3.5 w-3.5" />} label="আমার কোর্সসমূহ" onClick={() => navigateTo("my-courses")} accent />
+              <CapsuleButton icon={<GraduationCap className="h-3.5 w-3.5" />} label="আমার কোর্সসমূহ" onClick={() => navigateTo("classroom")} accent />
             )}
             <CapsuleButton icon={<Phone className="h-3.5 w-3.5" />} label="যোগাযোগ" onClick={() => navigateTo("contact")} />
             {settings.usefulLinks?.length > 0 && (
@@ -207,7 +207,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
             {allCourses.length === 0 ? (
               <div className="text-sm text-muted-foreground text-center py-4">কোনো কোর্স পাওয়া যায়নি</div>
             ) : (
-              allCourses.filter(c => !c.archived).map(c => (
+              allCourses.map(c => (
                 <button
                   key={c.id}
                   onClick={() => { setSelectedCourse(c); navigateTo("course-detail"); }}
@@ -420,7 +420,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
           </div>
         );
 
-      case "my-courses":
+      case "classroom":
         return (
           <div className="space-y-2">
             <div className="text-sm text-muted-foreground mb-2">🎓 আপনার এনরোল করা কোর্সসমূহ:</div>
@@ -516,7 +516,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
               </div>
             )}
 
-            <a href={`/my-courses/${ec.id}`}
+            <a href={`/classroom/${ec.id}`}
               className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors">
               <BookOpen className="h-4 w-4" /> কোর্সে যান
             </a>
@@ -535,7 +535,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
     "enrollment-guide": "এনরোলমেন্ট গাইড",
     "payment-info": "পেমেন্ট তথ্য",
     contact: "যোগাযোগ",
-    "my-courses": "আমার কোর্সসমূহ",
+    "classroom": "আমার কোর্সসমূহ",
     "my-course-detail": selectedEnrolledCourse?.courseName || "কোর্স",
     "useful-links": "দরকারি লিংক",
   };

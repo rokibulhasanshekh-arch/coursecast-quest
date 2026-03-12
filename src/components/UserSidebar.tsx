@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { X, Home, BookOpen, User, FileText, MessageCircle, Share2, Download, Sun, Moon, ExternalLink, ClipboardList, Lock, Globe, Heart, FolderOpen, Calendar } from "lucide-react";
+import { X, Home, BookOpen, User, FileText, MessageCircle, Share2, Download, Sun, Moon, ExternalLink, ClipboardList, Lock, Globe, Heart, FolderOpen, Calendar, School } from "lucide-react";
 import { useAppSettings } from "@/contexts/AppSettingsContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTheme } from "@/hooks/use-theme";
@@ -71,7 +71,7 @@ export function UserSidebar({ open, onClose }: Props) {
         <nav className="p-2 flex-1 overflow-y-auto pb-20">
           <p className="px-3 py-1.5 text-[10px] text-muted-foreground font-semibold uppercase tracking-wider">Menu</p>
           <SidebarLink to="/home" icon={Home} label="Home" onClick={onClose} />
-          <SidebarLink to="/my-courses" icon={BookOpen} label="My Courses" onClick={onClose} />
+          <SidebarLink to="/classroom" icon={School} label="Classroom" onClick={onClose} />
           <SidebarLink to="/profile" icon={User} label="Profile" onClick={onClose} />
 
           {activeCourse && (

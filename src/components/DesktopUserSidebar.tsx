@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, BookOpen, User, MessageCircle, Share2, Sun, Moon, ExternalLink, FolderOpen, ClipboardList, Calendar, Globe, Heart, Lock } from "lucide-react";
+import { Home, BookOpen, User, MessageCircle, Share2, Sun, Moon, ExternalLink, FolderOpen, ClipboardList, Calendar, Globe, Heart, Lock, School } from "lucide-react";
 import { useAppSettings } from "@/contexts/AppSettingsContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTheme } from "@/hooks/use-theme";
@@ -36,7 +36,7 @@ export function DesktopUserSidebar() {
       <nav className="p-2 flex flex-col gap-0.5">
         <p className="px-3 py-1.5 text-[10px] text-muted-foreground font-semibold uppercase tracking-wider">Menu</p>
         <SidebarLink to="/home" icon={Home} label="Home" active={isActive("/home") || isActive("/")} />
-        <SidebarLink to="/my-courses" icon={BookOpen} label="My Courses" active={isActive("/my-courses")} />
+        <SidebarLink to="/classroom" icon={School} label="Classroom" active={isActive("/classroom")} />
         <SidebarLink to="/exams" icon={ClipboardList} label="Exams" active={isActive("/exams")} />
         <SidebarLink to="/profile" icon={User} label="Profile" active={isActive("/profile")} />
 
