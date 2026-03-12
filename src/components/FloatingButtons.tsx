@@ -207,7 +207,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
             {allCourses.length === 0 ? (
               <div className="text-sm text-muted-foreground text-center py-4">কোনো কোর্স পাওয়া যায়নি</div>
             ) : (
-              allCourses.filter(c => !c.archived).map(c => (
+              allCourses.map(c => (
                 <button
                   key={c.id}
                   onClick={() => { setSelectedCourse(c); navigateTo("course-detail"); }}
