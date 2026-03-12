@@ -21,7 +21,7 @@ type MenuScreen =
   | "enrollment-guide" 
   | "payment-info" 
   | "contact" 
-  | "my-courses" 
+  | "classroom" 
   | "my-course-detail"
   | "useful-links";
 
