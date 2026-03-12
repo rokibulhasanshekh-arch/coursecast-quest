@@ -90,8 +90,6 @@ export default function AdminCoursesPage() {
         instructors: instructors.filter((i) => i.name),
         discussionGroups: discussionGroups.filter((g) => g.name && g.link),
         routinePDF, allMaterialsLink, createdAt: Timestamp.now(),
-        endDate: endDate ? Timestamp.fromDate(new Date(endDate + "T23:59:59")) : null,
-        archived: endDate ? new Date(endDate + "T23:59:59") < new Date() : false,
       };
       if (editCourse) {
         data.order = (editCourse as any).order || 0;
