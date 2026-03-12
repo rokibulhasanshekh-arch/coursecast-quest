@@ -191,7 +191,7 @@ export function FloatingButtons({ course }: FloatingButtonsProps = {}) {
             <CapsuleButton icon={<CreditCard className="h-3.5 w-3.5" />} label="এনরোলমেন্ট গাইড" onClick={() => navigateTo("enrollment-guide")} />
             <CapsuleButton icon={<CreditCard className="h-3.5 w-3.5" />} label="পেমেন্ট তথ্য" onClick={() => navigateTo("payment-info")} />
             {user && enrolledCourseIds.length > 0 && (
-              <CapsuleButton icon={<GraduationCap className="h-3.5 w-3.5" />} label="আমার কোর্সসমূহ" onClick={() => navigateTo("my-courses")} accent />
+              <CapsuleButton icon={<GraduationCap className="h-3.5 w-3.5" />} label="আমার কোর্সসমূহ" onClick={() => navigateTo("classroom")} accent />
             )}
             <CapsuleButton icon={<Phone className="h-3.5 w-3.5" />} label="যোগাযোগ" onClick={() => navigateTo("contact")} />
             {settings.usefulLinks?.length > 0 && (
