@@ -62,7 +62,7 @@ export default function AdminCoursesPage() {
   useEffect(() => { fetchCourses(); }, []);
 
   const resetForm = () => {
-    setCourseName(""); setThumbnailUrl(""); setPrice(0); setEndDate("");
+    setCourseName(""); setThumbnailUrl(""); setPrice(0);
     setOverview([""]); setSubjects([{ subjectId: crypto.randomUUID(), subjectName: "", chapters: [] }]);
     setInstructors([{ name: "", subject: "", image: "" }]);
     setDiscussionGroups([{ name: "", link: "" }]); setRoutinePDF(""); setAllMaterialsLink(""); setEditCourse(null);
